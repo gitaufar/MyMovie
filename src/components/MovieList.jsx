@@ -30,7 +30,7 @@ export const MovieList = ({ movies = null, genres = null }) => {
     return (
         <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4">
             {movies.map((movie) => {
-                if (movie.adults) return null;
+                if (movie.adults || movie.genre_ids.includes(18) ) return null;
                 let genresString = changeIdGenres(movie.genre_ids, genres)
                 return (<MovieCard key={movie.id} movie={movie} genres={genresString} />)
             })}
